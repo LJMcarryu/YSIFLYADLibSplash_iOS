@@ -1,0 +1,23 @@
+# 二进制产物不入仓，统一托管在 GitHub Releases
+*.xcframework
+*.xcframework.zip
+*.zip
+
+# macOS / Xcode
+.DS_Store
+xcuserdata/
+*.xcuserstate
+build/
+DerivedData/
+.swiftpm/xcode/
+.codex-bridge/
+*.hmap
+
+# Python 本地/离线门禁缓存，不得污染正式候选工作树
+__pycache__/
+*.py[cod]
+
+# CocoaPods 示例工程产物（pod install 生成，不入仓）
+Pods/
+Podfile.lock
+*.xcworkspace
