@@ -1,8 +1,10 @@
 # 发布维护
 
-<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.1","releaseState":"PREPARING","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.1"} -->
+<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.1","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.1"} -->
 
-当前为首发准备态，禁止把本地验证包上传为正式 Release。
+## 6.3.1
+
+正式二进制来自提交 A `a20aa5786ed6d38bef3712ec38ac923209c8c30d`；发布元数据提交 B 为 `56af329df190a0babf386168ae625366b6d0502e`。两者不得混称二进制源码提交。当前版本的冻结库存与发布阶段以 `release-state.json` 为准。
 
 ## 正式发布唯一入口
 

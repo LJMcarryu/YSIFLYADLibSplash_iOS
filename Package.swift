@@ -15,9 +15,9 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "YSIFLYADLib",
-            // 正式 prepare 完成后回填签名 zip checksum。
+            // 正式 prepare 冻结的签名 zip checksum。
             url: "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/download/6.3.1/YSIFLYADLib-SplashOnly.xcframework.zip",
-            checksum: "__YSIFLYADLIB_6_3_1_SWIFTPM_CHECKSUM_PENDING__"
+            checksum: "e1b8903bceb561cd823738a0d84d89de041af0bd1357b6b075ea0f903e0ef288"
         ),
         .target(
             name: "YSIFLYADLibResources",
