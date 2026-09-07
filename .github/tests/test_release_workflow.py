@@ -717,6 +717,18 @@ class WorkflowStructureTests(unittest.TestCase):
         )
         cls.podspec_json.write_text(podspec.stdout, encoding="utf-8")
 
+    def test_uploaded_formal_assets_keep_splash_only_names(self) -> None:
+        steps = self.jobs["validate-release-assets"]["steps"]
+        upload = next(step for step in steps if step.get("uses") == "actions/upload-artifact@v4")
+        self.assertEqual(
+            {
+                "${{ runner.temp }}/ys-release/YSIFLYADLib-SplashOnly.xcframework.zip",
+                "${{ runner.temp }}/ys-release/YSIFLYADLib-SplashOnly-${{ needs.verify-repository.outputs.version }}.zip",
+                "${{ runner.temp }}/ys-release/checksums.txt",
+            },
+            set(upload["with"]["path"].splitlines()),
+        )
+
     def test_yaml_and_all_embedded_bash_blocks_parse(self) -> None:
         for job_name, job in self.jobs.items():
             for index, step in enumerate(job.get("steps", [])):
