@@ -3,12 +3,12 @@
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
   "version": "6.3.1",
-  "phase": "PREPARING",
+  "phase": "FROZEN",
   "binarySourceCommit": "a20aa5786ed6d38bef3712ec38ac923209c8c30d",
   "releaseMetadataCommit": "56af329df190a0babf386168ae625366b6d0502e",
   "artifactInventory": {
     "count": 3,
-    "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    "sha256": "e2f9defd82859820e0961a03c458f43da5a8249a918a67418de21950e79fafee"
   },
   "appleReview": {
     "requiredForRelease": false,
