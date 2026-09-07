@@ -4,8 +4,8 @@
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
   "version": "6.3.1",
   "phase": "PREPARING",
-  "binarySourceCommit": "90da9847084b398f2cda5469f3928831f968721f",
-  "releaseMetadataCommit": "b86f5d7dc5e1105194889bc60a5ee9eec40b611f",
+  "binarySourceCommit": "a20aa5786ed6d38bef3712ec38ac923209c8c30d",
+  "releaseMetadataCommit": "56af329df190a0babf386168ae625366b6d0502e",
   "artifactInventory": {
     "count": 3,
     "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
