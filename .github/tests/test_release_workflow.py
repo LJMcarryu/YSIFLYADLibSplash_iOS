@@ -383,6 +383,18 @@ class ReleaseModeContractTests(unittest.TestCase):
 
 
 class ReleaseDownloaderTests(unittest.TestCase):
+    def test_preparing_state_cannot_download_formal_or_regular_draft_assets(self) -> None:
+        repository = "LJMcarryu/YSIFLYADLibSplash_iOS"
+        state = {"repository": repository, "channel": "ys-splash", "version": VERSION,
+                 "phase": "PREPARING", "publication": None,
+                 "artifactInventory": {"count": 3, "sha256": "0" * 64}}
+        DOWNLOAD.validate_download_state(state, repository, "0.0.123", "draft_candidate", control_plane_canary=True)
+        for version, mode, canary in ((VERSION, "formal_release", True),
+                                      (VERSION, "draft_candidate", True),
+                                      ("0.0.123", "draft_candidate", False)):
+            with self.subTest(mode=mode, version=version), self.assertRaises(DOWNLOAD.DownloadError):
+                DOWNLOAD.validate_download_state(state, repository, version, mode, control_plane_canary=canary)
+
     def setUp(self) -> None:
         self.contents = {
             f"YSIFLYADLib-SplashOnly-{VERSION}.zip": b"combined",
@@ -716,6 +728,14 @@ class WorkflowStructureTests(unittest.TestCase):
             stderr=subprocess.PIPE,
         )
         cls.podspec_json.write_text(podspec.stdout, encoding="utf-8")
+
+    def test_disabled_format_symbol_pattern_rejects_real_objc_symbols(self) -> None:
+        patterns = re.findall(r'assert not re.search\(r"([^"]+)" \+ denied, symbols\)', self.source)
+        self.assertEqual(1, len(patterns))
+        for name in ("YSIFLYBanner", "YSIFLYInterstitial", "YSIFLYNativeFeed", "YSIFLYReward"):
+            for kind in ("CLASS", "METACLASS"):
+                self.assertIsNotNone(re.search(patterns[0] + name, f"000000 S _OBJC_{kind}_$_{name}Ad"))
+            self.assertIsNone(re.search(patterns[0] + name, "000000 S _OBJC_CLASS_$_YSIFLYSplashAd"))
 
     def test_uploaded_formal_assets_keep_splash_only_names(self) -> None:
         steps = self.jobs["validate-release-assets"]["steps"]

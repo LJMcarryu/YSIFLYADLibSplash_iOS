@@ -293,6 +293,23 @@ def ensure_destination(path: Path) -> None:
             child.unlink()
 
 
+def validate_download_state(state: dict[str, Any], repository: str, version: str,
+                            mode: str, *, control_plane_canary: bool = False) -> None:
+    bootstrap = (
+        control_plane_canary and mode == "draft_candidate"
+        and re.fullmatch(r"0\.0\.[1-9][0-9]*", version) is not None
+        and repository == "LJMcarryu/YSIFLYADLibSplash_iOS"
+        and state.get("repository") == repository
+        and state.get("channel") == "ys-splash"
+        and state.get("version") == "6.3.1"
+        and state.get("phase") == "PREPARING"
+        and state.get("artifactInventory") == {"count": 3, "sha256": "0" * 64}
+        and state.get("publication") is None
+    )
+    require(state.get("phase") in {"FROZEN", "PUBLISHED", "VERIFIED", "CLOSED"} or bootstrap,
+            "Release 下载必须绑定冻结状态；首发准备态只允许显式 Canary 夹具")
+
+
 def run(arguments: argparse.Namespace) -> dict[str, str]:
     mode = arguments.mode
     repository = arguments.repository
@@ -303,8 +320,8 @@ def run(arguments: argparse.Namespace) -> dict[str, str]:
     state = json.loads(arguments.release_state.read_text(encoding="utf-8"))
     require(state.get("version") == version or mode == "draft_candidate",
             "release-state version 与正式 Release 不一致")
-    require(state.get("phase") in {"FROZEN", "PUBLISHED", "VERIFIED", "CLOSED"},
-            "Release 下载必须绑定 release-state FROZEN 或后续阶段")
+    validate_download_state(state, repository, version, mode,
+                            control_plane_canary=getattr(arguments, "control_plane_canary", False))
     documented = (state.get("binarySourceCommit"), state.get("releaseMetadataCommit"))
     require(all(SHA40.fullmatch(value or "") for value in documented)
             and documented[0] != documented[1], "release-state A/B 非法")
@@ -392,6 +409,7 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--candidate-id", default="")
     result.add_argument("--target-branch", default="")
     result.add_argument("--release-state", type=Path, default=Path("release-state.json"))
+    result.add_argument("--control-plane-canary", action="store_true")
     result.add_argument("--release-metadata-output", type=Path)
     result.add_argument("--destination", required=True, type=Path)
     return result

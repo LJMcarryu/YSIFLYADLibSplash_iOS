@@ -514,6 +514,7 @@ jobs:
             --expected-repository "$GITHUB_REPOSITORY" \
             --expected-version "$state_version"
           python3 .github/scripts/download_release_assets.py \
+            --control-plane-canary \
             --mode draft_candidate \
             --repository "$GITHUB_REPOSITORY" \
             --version "$CANARY_TAG" \
@@ -819,7 +820,7 @@ jobs:
               assert "_OBJC_CLASS_$_YSIFLYSplashVideoEventPerformer" in symbols
               for denied in ("YSIFLYBanner", "YSIFLYInterstitial",
                              "YSIFLYNativeFeed", "YSIFLYReward"):
-                  assert not re.search(r"_OBJC_(?:CLASS|METACLASS)_\\$_" + denied, symbols), denied
+                  assert not re.search(r"_OBJC_(?:CLASS|METACLASS)_\$_" + denied, symbols), denied
 
               architectures = set(
                   subprocess.check_output(
