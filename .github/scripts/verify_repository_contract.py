@@ -11,10 +11,11 @@ import sys
 from pathlib import Path
 
 
-VERSION = "6.3.1"
-PREVIOUS_VERSION = "6.3.0"
+VERSION = "6.3.5"
+PREVIOUS_VERSION = "6.3.1"
 REPOSITORY = "LJMcarryu/YSIFLYADLibSplash_iOS"
 HISTORICAL = {
+    "e1b8903bceb561cd823738a0d84d89de041af0bd1357b6b075ea0f903e0ef288",
     "73a1e82ffee9c01d63f1e6a391c732e8837c422d23ab60846c92e8f2c167ad08",
     "d65b715b1fa5eaf1ae38c3a94f3eaf7e2289958f2b678aa0dccec1f66873627a",
     "757f133d00cbd248366392f1dbf460adbd35089588c8da57b1cf947adc7f813d",
@@ -114,13 +115,13 @@ def verify_machine(
     )
     checksum = one(r'checksum:\s*"([^"]+)"', package, "SwiftPM checksum")
     if release_kind == "repository" and machine["phase"] == "PREPARING":
-        require(checksum == "__YSIFLYADLIB_6_3_1_SWIFTPM_CHECKSUM_PENDING__",
+        require(checksum == "__YSIFLYADLIB_6_3_5_SWIFTPM_CHECKSUM_PENDING__",
                 "准备态只允许精确 checksum 占位符")
     else:
         require(re.fullmatch(r"[0-9a-f]{64}", checksum) is not None,
-                "6.3.1 分发基线 checksum 非 64 位小写 SHA-256")
+                "6.3.5 分发基线 checksum 非 64 位小写 SHA-256")
         require(checksum != "0" * 64 and checksum not in HISTORICAL,
-                "6.3.1 分发基线 checksum 为零或沿用历史值")
+                "6.3.5 分发基线 checksum 为零或沿用历史值")
     for marker in (
         '.library(name: "YSIFLYADLibSplash", targets: ["YSIFLYADLib", "YSIFLYADLibResources"])',
         '.copy("YSAdvSDK.bundle")',

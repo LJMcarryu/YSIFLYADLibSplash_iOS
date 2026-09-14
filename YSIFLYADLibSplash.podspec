@@ -1,10 +1,10 @@
 Pod::Spec.new do |s|
   s.name     = 'YSIFLYADLibSplash'
-  s.version  = '6.3.1'
+  s.version  = '6.3.5'
   s.summary  = '萤石 YS 图片和视频仅开屏广告 SDK。'
   s.homepage = 'https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS'
   s.author   = { 'LJMcarryu' => 'jmliu6@iflytek.com' }
-  s.source   = { :http => 'https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/download/6.3.1/YSIFLYADLib-SplashOnly-6.3.1.zip' }
+  s.source   = { :http => 'https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/download/6.3.5/YSIFLYADLib-SplashOnly-6.3.5.zip' }
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
 
   # iOS 11 声明只可随重新构建并验证过的新版本二进制发布；不得套用到旧 release 产物。

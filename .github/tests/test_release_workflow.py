@@ -43,8 +43,8 @@ REPOSITORY_CONTRACT = load_module(
     ROOT / ".github/scripts/verify_repository_contract.py",
 )
 
-VERSION = "6.3.1"
-PREVIOUS_VERSION = "6.3.0"
+VERSION = "6.3.5"
+PREVIOUS_VERSION = "6.3.1"
 BINARY_COMMIT = "a" * 40
 METADATA_COMMIT = "b" * 40
 CANDIDATE_ID = "d" * 64
@@ -367,7 +367,7 @@ class ReleaseModeContractTests(unittest.TestCase):
                 with self.assertRaises(MODE.ContractError):
                     MODE.read_local_contract(root)
 
-    def test_repository_tracks_first_release_lifecycle_without_inventing_history(self) -> None:
+    def test_repository_tracks_current_release_without_inventing_history(self) -> None:
         contract = MODE.read_local_contract(ROOT)
         self.assertEqual(contract["version"], VERSION)
         self.assertIn(contract["phase"], {"PREPARING", "FROZEN", "CLOSED"})
@@ -383,12 +383,19 @@ class ReleaseModeContractTests(unittest.TestCase):
 
 
 class ReleaseDownloaderTests(unittest.TestCase):
-    def test_preparing_state_cannot_download_formal_or_regular_draft_assets(self) -> None:
+    def test_first_release_preparing_canary_exception_stays_scoped_to_6_3_1(self) -> None:
         repository = "LJMcarryu/YSIFLYADLibSplash_iOS"
-        state = {"repository": repository, "channel": "ys-splash", "version": VERSION,
+        state = {"repository": repository, "channel": "ys-splash", "version": "6.3.1",
                  "phase": "PREPARING", "publication": None,
                  "artifactInventory": {"count": 3, "sha256": "0" * 64}}
         DOWNLOAD.validate_download_state(state, repository, "0.0.123", "draft_candidate", control_plane_canary=True)
+        # 6.3.1 首发例外不扩展到本次版本；普通候选仍须绑定冻结态。
+        current_preparing = {**state, "version": VERSION}
+        with self.assertRaises(DOWNLOAD.DownloadError):
+            DOWNLOAD.validate_download_state(
+                current_preparing, repository, "0.0.123", "draft_candidate",
+                control_plane_canary=True,
+            )
         for version, mode, canary in ((VERSION, "formal_release", True),
                                       (VERSION, "draft_candidate", True),
                                       ("0.0.123", "draft_candidate", False)):
@@ -1141,8 +1148,8 @@ class WorkflowStructureTests(unittest.TestCase):
             value = original_read(root, relative)
             if relative == "YSIFLYADLibSplash.podspec":
                 return re.sub(
-                    r"(s\.version\s*=\s*['\"])6\.3\.1",
-                    r"\g<1>6.3.2",
+                    rf"(s\.version\s*=\s*['\"]){re.escape(VERSION)}",
+                    rf"\g<1>{PREVIOUS_VERSION}",
                     value,
                     count=1,
                 )

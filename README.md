@@ -1,8 +1,19 @@
 # 萤石仅开屏 SDK
 
-<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.1","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.1"} -->
+## 6.3.5 冻结与发布记录
 
-当前正式版本：[6.3.1](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.1)。
+<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.5","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5"} -->
+
+- `releaseState`：`FORMAL`
+- `binarySourceCommit`（SDK 二进制源码提交）：`296111efe0762df5bb75f67efdda6d42752e048f`
+- `releaseMetadataCommit`（仅回填 checksum、扫描汇总和发布验收事实，不是 SDK 二进制源码提交）：`9e11af8f51d87b280b72803053a7b5745e1d7535`
+- `candidateId`：`2d31c748ad88474584a38409c84a28f39f96865ca40eff417fe14f2c4be6b463`
+
+`6.3.5` 正式签名资产、checksum 和 A/B 元数据已经冻结。`release-state.json` 保存冻结库存与分发阶段；正式发布时间和消费回执以其中的 `publication` 字段及本版本 GitHub Release 为准。Apple Review 为 `not-run`；CocoaPods trunk 不在本次范围。
+
+当前正式版本：[6.3.5](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5)。生产项目固定到具体版本；公开可用性以同版本 GitHub Release 和发布后 CI 为准。
+
+上一正式版本：[6.3.1](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.1)。
 
 只保留图片、视频开屏；不包含 Banner、插屏、自渲染和激励广告。最低 iOS 11.0。
 
