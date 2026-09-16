@@ -3,9 +3,7 @@ platform :ios, '11.0'
 
 target 'YSIFLYADLibSimple' do
   use_frameworks!
-  # YS 媒体定制 SDK（model B 单包静态 framework：仅图片和视频开屏）。
-  # 二进制托管在本仓 GitHub Releases，podspec 经 raw URL 直连；静态库随 app 链接（无需 Embed），
-  # 资源包 YSAdvSDK.bundle 经 podspec s.resources 自动拷入 app，-ObjC 由 podspec 自动注入。
-  # 6.3.5 按同版本 tag 接入。
+  # 固定使用 6.3.5；CocoaPods 自动添加资源包和 -ObjC。
+  # 静态 XCFramework 随 App 链接，无需 Embed。
   pod 'YSIFLYADLibSplash', :podspec => 'https://raw.githubusercontent.com/LJMcarryu/YSIFLYADLibSplash_iOS/6.3.5/YSIFLYADLibSplash.podspec'
 end
