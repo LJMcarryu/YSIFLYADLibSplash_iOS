@@ -16,8 +16,8 @@ let package = Package(
         .binaryTarget(
             name: "YSIFLYADLib",
             // 6.4.0 正式 prepare 产物的真实 SwiftPM checksum。
-            url: "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/download/6.3.5/YSIFLYADLib-SplashOnly.xcframework.zip",
-            checksum: "ca39b32c4b5c2404f79b9ce7645479683a7307d6b802caea8e47e02ac3a1e886"
+            url: "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/download/6.4.0/YSIFLYADLib-SplashOnly.xcframework.zip",
+            checksum: "e20a4898a2c2f03e321fc6cec948e2bd87260ac19d6f6182117e3f07410b977d"
         ),
         .target(
             name: "YSIFLYADLibResources",
