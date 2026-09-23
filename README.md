@@ -1,14 +1,12 @@
 # 萤石仅开屏 iOS SDK
 
-`YSIFLYADLibSplash` 提供图片、视频开屏广告，最低支持 iOS 11.0。当前正式版本为 [6.3.5](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5)，不包含 Banner、插屏、自渲染信息流或激励广告。
+`YSIFLYADLibSplash` 提供图片、视频开屏广告，最低支持 iOS 11.0。当前正式版本为 [6.4.0](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0)，不包含 Banner、插屏、自渲染信息流或激励广告。
 
-<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.5","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5"} -->
+<!-- ifly-release-status: {"schemaVersion":1,"version":"6.4.0","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0"} -->
 
-## 6.4.0 候选联调说明
+## 6.4.0 冻结与发布记录
 
-<!-- ifly-release-candidate: {"schemaVersion":1,"version":"6.4.0","releaseState":"CANDIDATE","publicationState":"UNPUBLISHED","repository":"LJMcarryu/YSIFLYADLibSplash_iOS","currentFormalVersion":"6.3.5"} -->
-
-`6.4.0` 目前是待联调候选，尚未发布。当前公开正式版和生产依赖仍为 [`6.3.5`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5)；已发布的 Tag、Release 和资产不追溯改变。
+`6.4.0` 的正式分发资料与签名资产已经冻结；是否已完成公开及消费验证，以 `release-state.json.publication` 和同版本 GitHub Release 的实际状态为准。
 
 - 公开 API 方法签名不变。
 - 共享 UIScene 适配将展示、落地页、外跳回流、曝光判断和 UI 生命周期绑定到广告的实际来源 window/Scene。没有来源时，仅在前台应用 Scene 唯一且明确时兜底，不跨 Scene 随机选择；独立落地页始终属于来源 Scene。
@@ -29,7 +27,7 @@
 
 ## 安装
 
-选择一种安装方式，固定版本 `6.3.5`。
+选择一种安装方式，固定版本 `6.4.0`。
 
 ### CocoaPods
 
@@ -42,7 +40,7 @@ platform :ios, '11.0'
 target 'YourApp' do
   use_frameworks!
   pod 'YSIFLYADLibSplash',
-      :podspec => 'https://raw.githubusercontent.com/LJMcarryu/YSIFLYADLibSplash_iOS/6.3.5/YSIFLYADLibSplash.podspec'
+      :podspec => 'https://raw.githubusercontent.com/LJMcarryu/YSIFLYADLibSplash_iOS/6.4.0/YSIFLYADLibSplash.podspec'
 end
 ```
 
@@ -61,11 +59,11 @@ open YourApp.xcworkspace
 https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS.git
 ```
 
-选择 **Exact Version** `6.3.5`，将产品 `YSIFLYADLibSplash` 加入 App target。在 App target 的 **Other Linker Flags** 保留 `$(inherited)` 并添加 `-ObjC`。SwiftPM 自动加入资源包。
+选择 **Exact Version** `6.4.0`，将产品 `YSIFLYADLibSplash` 加入 App target。在 App target 的 **Other Linker Flags** 保留 `$(inherited)` 并添加 `-ObjC`。SwiftPM 自动加入资源包。
 
 ### 手动集成
 
-从 [Release 6.3.5](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5) 下载 `YSIFLYADLib-SplashOnly-6.3.5.zip`，解压后：
+从 [Release 6.4.0](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0) 下载 `YSIFLYADLib-SplashOnly-6.4.0.zip`，解压后：
 
 1. 将 `YSIFLYADLib.xcframework` 加入 App target，选择 **Do Not Embed**。
 2. 将 `YSAdvSDK.bundle` 加入 **Copy Bundle Resources**，确认最终 App 中只有一份。

@@ -1,16 +1,14 @@
 # 发布维护
 
-## 6.4.0 候选状态
+## 6.4.0 冻结与发布记录
 
-<!-- ifly-release-candidate: {"schemaVersion":1,"version":"6.4.0","releaseState":"CANDIDATE","publicationState":"UNPUBLISHED","repository":"LJMcarryu/YSIFLYADLibSplash_iOS","currentFormalVersion":"6.3.5"} -->
+<!-- ifly-release-status: {"schemaVersion":1,"version":"6.4.0","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0"} -->
 
-`6.4.0` 当前仅为待联调候选，尚未发布，也没有正式 Tag、Release、资产或 checksum。当前公开正式版仍为 `6.3.5`，本仓 `release-state.json` 继续保持 `6.3.5/CLOSED`；只有完成联调和冻结后，才由私有源码仓编排器推进后续状态。已发布的 Tag、Release 和资产不覆盖、不移动。
+`6.4.0` 的正式签名资产、checksum 与分发资料已经冻结。当前正式版本为 [6.4.0](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0)；是否已完成公开及消费验证，以 `release-state.json.publication` 和同版本 GitHub Release 的实际状态为准。
 
-候选行为将展示、落地页、外跳回流、曝光判断和 UI 生命周期绑定到实际来源 window/Scene；无来源时只允许唯一且明确的前台应用 Scene，不跨 Scene 随机兜底，独立落地页始终归属来源 Scene。开屏 rootVC 仍须入窗；Scene 宿主的 `customWindow` 必须可见、尺寸有限且为正、已关联 Scene，并与 `rootVC.window` 同 Scene，可以是非 key、高 `windowLevel`、无 rootVC。非法输入展示失败，修正后可重试。公开 API 方法签名不变。
+本版将展示、落地页、外跳回流、曝光判断和 UI 生命周期绑定到实际来源 window/Scene；无来源时只允许唯一且明确的前台应用 Scene，不跨 Scene 随机兜底，独立落地页始终归属来源 Scene。开屏 rootVC 仍须入窗；Scene 宿主的 `customWindow` 必须可见、尺寸有限且为正、已关联 Scene，并与 `rootVC.window` 同 Scene，可以是非 key、高 `windowLevel`、无 rootVC。非法输入展示失败，修正后可重试。公开 API 方法签名不变。
 
 ## 6.3.5 冻结与发布记录
-
-<!-- ifly-release-status: {"schemaVersion":1,"version":"6.3.5","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.3.5"} -->
 
 `6.3.5` 已于 2026-09-14T12:54:15Z 正式公开，发布后的 [CocoaPods / SwiftPM 消费验证](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/actions/runs/34845999809)为 `success`；本仓 `release-state.json` 为 `6.3.5/CLOSED`。Tag 和发布资产保持不可变。
 
@@ -41,6 +39,6 @@ XCFramework zip 的 SwiftPM checksum 与上表 SHA-256 相同。
 
 正式发布由私有源码仓的 `scripts/release-plan-ys-splash.json` 驱动，依次执行 `prepare → preflight → publish → verify → closeout`。提交 A 构建并签名，提交 B 仅回填 checksum 与发布元数据；`release-state.json` 记录冻结库存及最终消费证据。
 
-上传资产精确为 `YSIFLYADLib-SplashOnly.xcframework.zip`、`YSIFLYADLib-SplashOnly-6.3.5.zip`、`checksums.txt`，禁止覆盖已有 Tag、Release 或资产。发布后必须匿名复验 SHA-256，并通过 SwiftPM、CocoaPods Demo 消费与 CLOSED 状态验证。
+上传资产精确为 `YSIFLYADLib-SplashOnly.xcframework.zip`、`YSIFLYADLib-SplashOnly-6.4.0.zip`、`checksums.txt`，禁止覆盖已有 Tag、Release 或资产。发布后必须匿名复验 SHA-256，并通过 SwiftPM、CocoaPods Demo 消费与 CLOSED 状态验证。
 
 Apple Review 为主动可选扫描，未运行记录 `not-run`；CocoaPods trunk 不在范围内。
