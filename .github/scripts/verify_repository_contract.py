@@ -11,8 +11,8 @@ import sys
 from pathlib import Path
 
 
-VERSION = "6.3.5"
-PREVIOUS_VERSION = "6.3.1"
+VERSION = "6.4.0"
+PREVIOUS_VERSION = "6.3.5"
 REPOSITORY = "LJMcarryu/YSIFLYADLibSplash_iOS"
 HISTORICAL = {
     "e1b8903bceb561cd823738a0d84d89de041af0bd1357b6b075ea0f903e0ef288",
@@ -115,13 +115,14 @@ def verify_machine(
     )
     checksum = one(r'checksum:\s*"([^"]+)"', package, "SwiftPM checksum")
     if release_kind == "repository" and machine["phase"] == "PREPARING":
-        require(checksum == "__YSIFLYADLIB_6_3_5_SWIFTPM_CHECKSUM_PENDING__",
+        marker = VERSION.replace(".", "_")
+        require(checksum == f"__YSIFLYADLIB_{marker}_SWIFTPM_CHECKSUM_PENDING__",
                 "准备态只允许精确 checksum 占位符")
     else:
         require(re.fullmatch(r"[0-9a-f]{64}", checksum) is not None,
-                "6.3.5 分发基线 checksum 非 64 位小写 SHA-256")
+                f"{VERSION} 分发基线 checksum 非 64 位小写 SHA-256")
         require(checksum != "0" * 64 and checksum not in HISTORICAL,
-                "6.3.5 分发基线 checksum 为零或沿用历史值")
+                f"{VERSION} 分发基线 checksum 为零或沿用历史值")
     for marker in (
         '.library(name: "YSIFLYADLibSplash", targets: ["YSIFLYADLib", "YSIFLYADLibResources"])',
         '.copy("YSAdvSDK.bundle")',
