@@ -369,15 +369,23 @@ class ReleaseModeContractTests(unittest.TestCase):
 
     def test_repository_tracks_current_release_without_inventing_history(self) -> None:
         contract = MODE.read_local_contract(ROOT)
-        self.assertEqual(contract["version"], VERSION)
-        self.assertIn(contract["phase"], {"PREPARING", "FROZEN", "CLOSED"})
+        self.assertIn(
+            (contract["version"], contract["state_version"], contract["phase"]),
+            {
+                (PREVIOUS_VERSION, PREVIOUS_VERSION, "CLOSED"),
+                (VERSION, PREVIOUS_VERSION, "CLOSED"),
+                (VERSION, VERSION, "PREPARING"),
+                (VERSION, VERSION, "FROZEN"),
+                (VERSION, VERSION, "CLOSED"),
+            },
+        )
         if contract["phase"] == "PREPARING":
             MODE.validate_pending(contract)
         else:
             MODE.validate_formal(contract)
         for name in ("README.md", "CHANGELOG.md", "RELEASING.md"):
             document = (ROOT / name).read_text()
-            self.assertIn(VERSION, document)
+            self.assertIn(contract["version"], document)
             self.assertNotIn("releases/tag/6.2.2", document)
             self.assertNotIn("releases/tag/6.2.3", document)
 
@@ -1108,6 +1116,7 @@ class WorkflowStructureTests(unittest.TestCase):
 
     def test_docs_drift_is_isolated_but_checksum_drift_fails_machine_scope(self) -> None:
         original_read = REPOSITORY_CONTRACT.read
+        repository_version = MODE.read_local_contract(ROOT)["version"]
         REPOSITORY_CONTRACT.verify_docs(ROOT, "repository")
 
         def docs_drift(root: Path, relative: str) -> str:
@@ -1147,9 +1156,13 @@ class WorkflowStructureTests(unittest.TestCase):
         def version_drift(root: Path, relative: str) -> str:
             value = original_read(root, relative)
             if relative == "YSIFLYADLibSplash.podspec":
+                drift_version = (
+                    VERSION if repository_version == PREVIOUS_VERSION
+                    else PREVIOUS_VERSION
+                )
                 return re.sub(
-                    rf"(s\.version\s*=\s*['\"]){re.escape(VERSION)}",
-                    rf"\g<1>{PREVIOUS_VERSION}",
+                    rf"(s\.version\s*=\s*['\"]){re.escape(repository_version)}",
+                    rf"\g<1>{drift_version}",
                     value,
                     count=1,
                 )
@@ -1163,14 +1176,25 @@ class WorkflowStructureTests(unittest.TestCase):
 
     def test_release_contracts_accept_only_current_frozen_state(self) -> None:
         original_read = REPOSITORY_CONTRACT.read
+        repository_version = MODE.read_local_contract(ROOT)["version"]
         frozen = json.loads(original_read(ROOT, "release-state.json"))
         frozen.update({"version": VERSION, "phase": "FROZEN", "publication": None})
 
-        def with_state(value: dict[str, object]):
+        def with_state(value: dict[str, object], version: str = VERSION):
             def read(root: Path, relative: str) -> str:
                 if relative == "release-state.json":
                     return json.dumps(value)
                 content = original_read(root, relative)
+                if relative in {
+                    "Package.swift",
+                    "YSIFLYADLibSplash.podspec",
+                    "YSIFLYADLibSimple/Podfile",
+                    "README.md",
+                    "CHANGELOG.md",
+                    "RELEASING.md",
+                    "YSIFLYADLibSimple/README.md",
+                }:
+                    content = content.replace(repository_version, version)
                 if relative == "Package.swift":
                     return re.sub(r'checksum:\s*"[^"]+"', 'checksum: "' + "1" * 64 + '"', content)
                 if relative in {"README.md", "CHANGELOG.md", "RELEASING.md"}:
@@ -1203,6 +1227,15 @@ class WorkflowStructureTests(unittest.TestCase):
                     REPOSITORY_CONTRACT.verify_machine(
                         ROOT, release_kind, self.podspec_json
                     )
+
+            with mock.patch.object(
+                REPOSITORY_CONTRACT,
+                "read",
+                side_effect=with_state(frozen, PREVIOUS_VERSION),
+            ), self.assertRaises(REPOSITORY_CONTRACT.ContractError):
+                REPOSITORY_CONTRACT.verify_machine(
+                    ROOT, release_kind, self.podspec_json
+                )
 
     def test_podspec_comments_cannot_substitute_for_parsed_link_contract(self) -> None:
         podspec_source = (ROOT / "YSIFLYADLibSplash.podspec").read_text(encoding="utf-8")

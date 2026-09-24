@@ -40,7 +40,9 @@ def read(root: Path, relative: str) -> str:
     return (root / relative).read_text(encoding="utf-8")
 
 
-def verify_release_status(label: str, document: str, phase: str = "FORMAL") -> None:
+def verify_release_status(
+    label: str, document: str, version: str, phase: str = "FORMAL"
+) -> None:
     markers = RELEASE_STATUS_RE.findall(document)
     require(len(markers) == 1, f"{label} 发布状态标记数量错误: {len(markers)}")
     try:
@@ -49,10 +51,10 @@ def verify_release_status(label: str, document: str, phase: str = "FORMAL") -> N
         raise ContractError(f"{label} 发布状态标记不是合法 JSON") from error
     expected = {
         "schemaVersion": 1,
-        "version": VERSION,
+        "version": version,
         "releaseState": phase,
         "distribution": "github-release",
-        "releaseUrl": f"https://github.com/{REPOSITORY}/releases/tag/{VERSION}",
+        "releaseUrl": f"https://github.com/{REPOSITORY}/releases/tag/{version}",
     }
     require(marker == expected, f"{label} 发布状态标记漂移: {marker}")
 
@@ -81,6 +83,21 @@ def one(pattern: str, text: str, label: str) -> str:
     return values[0]
 
 
+def distribution_version(
+    machine: dict[str, object], release_kind: str, podspec: str
+) -> str:
+    version = one(r"s\.version\s*=\s*['\"]([^'\"]+)", podspec, "podspec version")
+    allowed = (VERSION,)
+    if (
+        release_kind == "repository"
+        and machine["phase"] == "CLOSED"
+        and machine["version"] == PREVIOUS_VERSION
+    ):
+        allowed = (PREVIOUS_VERSION, VERSION)
+    require(version in allowed, f"podspec 版本错误: {version}")
+    return version
+
+
 def verify_machine(
     root: Path, release_kind: str, podspec_json_path: Path
 ) -> None:
@@ -91,38 +108,37 @@ def verify_machine(
     podspec = read(root, "YSIFLYADLibSplash.podspec")
     podfile = read(root, "YSIFLYADLibSimple/Podfile")
     podspec_json = json.loads(podspec_json_path.read_text(encoding="utf-8"))
-    version = one(r"s\.version\s*=\s*['\"]([^'\"]+)", podspec, "podspec version")
-    require(version == VERSION, f"podspec 版本错误: {version}")
+    version = distribution_version(machine, release_kind, podspec)
     package_url = one(r'url:\s*"([^"]*YSIFLYADLib-SplashOnly\.xcframework\.zip)"',
                       package, "SwiftPM URL")
     pod_url = one(r"s\.source\s*=\s*\{\s*:http\s*=>\s*['\"]([^'\"]+)",
                   podspec, "podspec URL")
     require(
         package_url == f"https://github.com/{REPOSITORY}/releases/download/"
-        f"{VERSION}/YSIFLYADLib-SplashOnly.xcframework.zip",
+        f"{version}/YSIFLYADLib-SplashOnly.xcframework.zip",
         "SwiftPM URL 版本或仓库错误",
     )
     require(
         pod_url == f"https://github.com/{REPOSITORY}/releases/download/"
-        f"{VERSION}/YSIFLYADLib-SplashOnly-{VERSION}.zip",
+        f"{version}/YSIFLYADLib-SplashOnly-{version}.zip",
         "podspec URL 版本或仓库错误",
     )
     demo_url = one(r":podspec\s*=>\s*'([^']+)'", podfile, "Demo podspec URL")
     require(
         demo_url == f"https://raw.githubusercontent.com/{REPOSITORY}/"
-        f"{VERSION}/YSIFLYADLibSplash.podspec",
+        f"{version}/YSIFLYADLibSplash.podspec",
         "Demo podspec URL 版本错误",
     )
     checksum = one(r'checksum:\s*"([^"]+)"', package, "SwiftPM checksum")
     if release_kind == "repository" and machine["phase"] == "PREPARING":
-        marker = VERSION.replace(".", "_")
+        marker = version.replace(".", "_")
         require(checksum == f"__YSIFLYADLIB_{marker}_SWIFTPM_CHECKSUM_PENDING__",
                 "准备态只允许精确 checksum 占位符")
     else:
         require(re.fullmatch(r"[0-9a-f]{64}", checksum) is not None,
-                f"{VERSION} 分发基线 checksum 非 64 位小写 SHA-256")
+                f"{version} 分发基线 checksum 非 64 位小写 SHA-256")
         require(checksum != "0" * 64 and checksum not in HISTORICAL,
-                f"{VERSION} 分发基线 checksum 为零或沿用历史值")
+                f"{version} 分发基线 checksum 为零或沿用历史值")
     for marker in (
         '.library(name: "YSIFLYADLibSplash", targets: ["YSIFLYADLib", "YSIFLYADLibResources"])',
         '.copy("YSAdvSDK.bundle")',
@@ -155,6 +171,9 @@ def verify_machine(
 
 def verify_docs(root: Path, release_kind: str) -> None:
     machine = state(root, release_kind)
+    version = distribution_version(
+        machine, release_kind, read(root, "YSIFLYADLibSplash.podspec")
+    )
     phase = "PREPARING" if machine["phase"] == "PREPARING" else "FORMAL"
     documents = {
         name: read(root, name)
@@ -162,8 +181,8 @@ def verify_docs(root: Path, release_kind: str) -> None:
     }
     demo = read(root, "YSIFLYADLibSimple/README.md")
     for label, document in documents.items():
-        verify_release_status(label, document, phase)
-    require(VERSION in demo, "Demo 缺少当前版本展示")
+        verify_release_status(label, document, version, phase)
+    require(version in demo, "Demo 缺少当前版本展示")
 
 
 def main() -> int:
