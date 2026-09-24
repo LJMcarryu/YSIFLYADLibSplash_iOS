@@ -3,7 +3,7 @@
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
   "version": "6.4.0",
-  "phase": "FROZEN",
+  "phase": "CLOSED",
   "binarySourceCommit": "916a363297f31e696621130e7c88c10eef91b879",
   "releaseMetadataCommit": "71ab1c891d3ba0785d9f6bc9d6c5432964a3338d",
   "artifactInventory": {
@@ -15,5 +15,16 @@
     "statusAtFreeze": "not-run",
     "evidenceIncluded": false
   },
-  "publication": null
+  "publication": {
+    "releaseId": 395306855,
+    "tagName": "6.4.0",
+    "tagObjectSha": "0de9600b512d6437afa476b0d61c9fb2c9a79ec4",
+    "tagCommitSha": "42857a0d2699bf8dd43dc9b77e1df6bba1cf055f",
+    "releaseUrl": "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0",
+    "publishedAt": "2026-09-24T04:57:04Z",
+    "formalConsumerRunId": 35957815498,
+    "formalConsumerRunUrl": "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/actions/runs/35957815498",
+    "conclusion": "success",
+    "verifiedAt": "2026-09-24T07:45:17Z"
+  }
 }
