@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "state": "BOOTSTRAP_CLOSED",
+  "state": "CANDIDATE",
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
   "closedVersion": "6.4.0",
-  "targetVersion": "6.4.0"
+  "targetVersion": "6.4.1"
 }
