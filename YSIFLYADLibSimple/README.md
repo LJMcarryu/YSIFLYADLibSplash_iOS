@@ -1,14 +1,10 @@
 # YS 仅开屏接入示例
 
-> `6.4.2` 的正式分发资料以同版本真实冻结 manifest 为准。当前正式版本：[`6.4.2`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.2)；公开时间和消费验证结论以 `release-state.json.publication` 与同版本 GitHub Release 的实际状态为准。历史 Tag、Release 和资产保持不可变。
-
 本工程使用 `YSIFLYADLibSplash 6.4.2`，演示图片与视频开屏的加载、展示、跳过、关闭和资源释放。依赖名称为 `YSIFLYADLibSplash`，代码仍导入 `<YSIFLYADLib/YSIFLYADLib.h>`。
 
 仅开屏 SDK 与多格式 `YSIFLYADLib` 使用相同模块和资源，不可同时加入同一 App。完整安装说明见[SDK 接入说明](../README.md)。
 
-> 本示例的 `Podfile` 固定正式版本 `6.4.2`。版本公开状态与消费验证结论以 `release-state.json.publication` 和同版本 GitHub Release 的实际状态为准。
->
-> `6.4.2` 继承 `6.4.0` 的公开 API 与 UI 行为，没有新增公开 API。展示、落地页、外跳回流、曝光判断和 UI 生命周期应归属广告的实际来源 window/Scene；无来源时只允许唯一且明确的前台应用 Scene，不跨 Scene 随机兜底，独立落地页始终属于来源 Scene。开屏 rootVC 仍须入窗；Scene 宿主的 `customWindow` 必须可见、尺寸有限且为正、已关联 Scene，并与 `rootVC.window` 同 Scene，可以是非 key、高 `windowLevel`、无 rootVC。非法输入展示失败，修正后可以重试。
+本示例的 `Podfile` 固定版本为 `6.4.2`；窗口与 Scene 的接入条件见[广告加载与展示](../docs/接入指南/广告加载与展示.md#展示窗口与-scene)。
 
 ## 从下载到运行
 
@@ -26,7 +22,7 @@ open YSIFLYADLibSimple.xcworkspace
 3. 按下文替换广告位，确认后台授权的 App 信息与当前 App 一致，然后运行。
 4. 首页应显示 `SDK Version: 6.4.2`。示例的 `Podfile` 固定使用正式版 `6.4.2`，示例页面可以随本仓库更新。
 
-使用 CocoaPods 后始终打开 `.xcworkspace`。它自动加入 `YSAdvSDK.bundle`（含隐私清单）和 `-ObjC`；不需再手工嵌入静态 framework。其他安装方式见[SDK 接入说明](../README.md#安装)。
+使用 CocoaPods 后始终打开 `.xcworkspace`。它自动加入 `YSAdvSDK.bundle`（含隐私清单）和 `-ObjC`；不需再手工嵌入静态 framework。其他安装方式见[SDK 接入说明](../docs/接入指南/安装与资源配置.md)。
 
 ## 配置广告位与请求
 
