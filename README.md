@@ -1,17 +1,11 @@
 # 萤石仅开屏 iOS SDK
 
-## 6.4.4 候选
-
-<!-- ifly-release-candidate: {"schemaVersion":1,"version":"6.4.4","releaseState":"CANDIDATE","publicationState":"UNPUBLISHED","repository":"LJMcarryu/YSIFLYADLibSplash_iOS","currentFormalVersion":"6.4.2"} -->
-
-`6.4.4` 为候选，尚未发布；当前公开正式版和生产依赖保持 `6.4.2`。历史 Tag、Release 和资产保持不可变。
-
 
 `YSIFLYADLibSplash` 为 iOS App 提供图片和视频开屏广告；本仓库包含分发清单、接入指南与示例。
 
-当前正式版本：[`6.4.2`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.2)。
+当前正式版本：[`6.4.4`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.4)。
 
-<!-- ifly-release-status: {"schemaVersion":1,"version":"6.4.2","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.2"} -->
+<!-- ifly-release-status: {"schemaVersion":1,"version":"6.4.4","releaseState":"FORMAL","distribution":"github-release","releaseUrl":"https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.4"} -->
 
 [运行示例](YSIFLYADLibSimple/README.md) · [安装指南](docs/接入指南/安装与资源配置.md) · [广告接入](docs/接入指南/广告加载与展示.md) · [更新记录](CHANGELOG.md) · [隐私与网络](docs/接入指南/隐私与网络.md) · [支持](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/issues) · [许可](LICENSE)
 
@@ -45,7 +39,7 @@ platform :ios, '11.0'
 target 'YourApp' do
   use_frameworks!
   pod 'YSIFLYADLibSplash',
-      :podspec => 'https://raw.githubusercontent.com/LJMcarryu/YSIFLYADLibSplash_iOS/6.4.2/YSIFLYADLibSplash.podspec'
+      :podspec => 'https://raw.githubusercontent.com/LJMcarryu/YSIFLYADLibSplash_iOS/6.4.4/YSIFLYADLibSplash.podspec'
 end
 ```
 
