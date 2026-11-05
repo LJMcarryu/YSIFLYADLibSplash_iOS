@@ -1,6 +1,6 @@
 # YS 仅开屏接入示例
 
-
+> 本示例遵循公开仓 Demo 契约：固定 SDK 版本、独立 Podfile、可复现运行说明和脱敏问题反馈。
 本工程使用 `YSIFLYADLibSplash 6.4.4`，演示图片与视频开屏的加载、展示、跳过、关闭和资源释放。依赖名称为 `YSIFLYADLibSplash`，代码仍导入 `<YSIFLYADLib/YSIFLYADLib.h>`。
 
 仅开屏 SDK 与多格式 `YSIFLYADLib` 使用相同模块和资源，不可同时加入同一 App。完整安装说明见[SDK 接入说明](../README.md)。
