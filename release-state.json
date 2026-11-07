@@ -1,7 +1,7 @@
 {
   "schemaVersion": 4,
   "distributionBackend": "tos",
-  "phase": "FROZEN",
+  "phase": "CLOSED",
   "version": "6.4.6",
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
@@ -29,5 +29,8 @@
       "sha256": "6d7fa48c9dd72595520720ef3efc2fde40d5dc367527e29620d8e21901db646c",
       "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/checksums.txt"
     }
-  ]
+  ],
+  "distributionRevisionId": "feeec7792ab3be70a6385d2c7208db995bec008c7d35e35958be4ccb1b2cf558",
+  "verifyReceiptSha256": "878dd2e3e5f1a283b0fe7aa86394608b99b4f6560e8c7bcec5feeab3f1c659dd",
+  "tagCommit": "566354e5fdcb4b3262a007d2e4ef51e0e00aed22"
 }
