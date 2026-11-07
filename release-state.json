@@ -1,30 +1,33 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 4,
+  "distributionBackend": "tos",
+  "phase": "FROZEN",
+  "version": "6.4.6",
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
-  "version": "6.4.4",
-  "phase": "CLOSED",
-  "binarySourceCommit": "25ebc73166c9596822cfcf4e93d74fc6c98bd5e4",
-  "releaseMetadataCommit": "56aaeb4d5b76858b266981d30afd76bff6a73ad2",
-  "artifactInventory": {
-    "count": 3,
-    "sha256": "737a806e886858e8bca4b7b82ec515eb6508355ee57c66b47713d1155be867b8"
-  },
-  "appleReview": {
-    "requiredForRelease": false,
-    "statusAtFreeze": "not-run",
-    "evidenceIncluded": false
-  },
-  "publication": {
-    "releaseId": 424120897,
-    "tagName": "6.4.4",
-    "tagObjectSha": "5dff0ee55a056fc3920d82d85fb86456c212198a",
-    "tagCommitSha": "fdb957f934aa380ceff80560c4cd57e198e5ab14",
-    "releaseUrl": "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.4",
-    "publishedAt": "2026-10-26T11:47:33Z",
-    "formalConsumerRunId": 40317695712,
-    "formalConsumerRunUrl": "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/actions/runs/40317695712",
-    "conclusion": "success",
-    "verifiedAt": "2026-10-26T11:49:35Z"
-  }
+  "artifactCandidateId": "2b5538685a56b8826256f831727b66eae5c2aad5352a042dec76ea4d15124cd3",
+  "binarySourceCommit": "b50f1af836e06ba61414d580c154617c24c34bfa",
+  "releaseMetadataCommit": "1b043f4b14fec0977c7431a51aa0bdde81474080",
+  "uploadInventorySha256": "d1c0c93c1d8dcd2d0004724e41741b54b7da540f80fba9740c24eb0b1898b3c9",
+  "channelInventorySha256": "15b8eb0daaa3b23effcd7bd5c322f793329f118ded10e8f45e64634354a15e58",
+  "assets": [
+    {
+      "name": "YSIFLYADLib-SplashOnly.xcframework.zip",
+      "size": 2326607,
+      "sha256": "62aa48e3bcf055797e5968a4b99af65ac06d7c07ad7b4c7f98a8cd1db3dddbe5",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip"
+    },
+    {
+      "name": "YSIFLYADLib-SplashOnly-6.4.6.zip",
+      "size": 2359374,
+      "sha256": "daa93423da61a5b413fb77125ad998fb34d937787fed6fd2e06be9363f3c118b",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/YSIFLYADLib-SplashOnly-6.4.6.zip"
+    },
+    {
+      "name": "checksums.txt",
+      "size": 312,
+      "sha256": "6d7fa48c9dd72595520720ef3efc2fde40d5dc367527e29620d8e21901db646c",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/checksums.txt"
+    }
+  ]
 }
