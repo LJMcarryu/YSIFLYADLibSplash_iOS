@@ -17,7 +17,7 @@ let package = Package(
             name: "YSIFLYADLib",
             // 6.4.6 正式 prepare 产物的真实 SwiftPM checksum。
             url: "https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
-            checksum: "2ec01c3403afdaf0f79fd6cd9a79df3f09227f3665282155c50d530026f8cce9"
+            checksum: "62aa48e3bcf055797e5968a4b99af65ac06d7c07ad7b4c7f98a8cd1db3dddbe5"
         ),
         .target(
             name: "YSIFLYADLibResources",
