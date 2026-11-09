@@ -9,7 +9,7 @@
 
 ## 从下载到运行
 
-准备 macOS、Xcode、CocoaPods 和可访问 TOS 发布记录s 的网络。最低部署目标为 iOS 11.0。使用模拟器可检查安装、链接和页面；真实广告填充、跳转和 ATT 请用真机联调。
+准备 macOS、Xcode、CocoaPods 和可访问 CocoaPods trunk 和 TOS 下载地址的网络。最低部署目标为 iOS 11.0。使用模拟器可检查安装、链接和页面；真实广告填充、跳转和 ATT 请用真机联调。
 
 ```bash
 git clone https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS.git
@@ -87,4 +87,4 @@ SDK 不要求额外 App ID 初始化。广告位须与媒体获授权的 App 和
 | 视频或图标异常 | 检查素材错误回调和 `YSAdvSDK.bundle` 是否被正确复制到 App |
 | 展示失败或黑屏 | 确认当前控制器已位于有效 window、App 在前台；避免与其他模态展示冲突 |
 
-反馈请使用 [Issues](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/issues)，附 SDK/iOS/Xcode 版本、设备类型、复现步骤、错误码和脱敏日志。版本变化见[更新记录](../CHANGELOG.md)。
+先查[错误处理与反馈](../docs/接入指南/错误处理与反馈.md)；仍需帮助时通过双方约定的支持渠道反馈，附 SDK/iOS/Xcode 版本、设备类型、复现步骤、错误码和脱敏日志。版本变化见[更新记录](../CHANGELOG.md)。
