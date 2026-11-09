@@ -77,7 +77,7 @@ SDK 不要求额外 App ID 初始化。广告位须与媒体获授权的 App 和
 
 | 现象 | 检查方法 |
 | --- | --- |
-| 下载依赖失败 | 检查 `raw.githubusercontent.com`、本版 Release、代理和证书，按错误 URL 定位后重试 |
+| 下载依赖失败 | 检查 CocoaPods trunk、TOS 下载地址、代理和证书，按错误信息定位后重试 |
 | 找不到 `YSIFLYADLibSplash` 头 | `YSIFLYADLibSplash` 是依赖/产品名，导入模块为 `YSIFLYADLib`；使用 workspace |
 | 重复符号或资源 | 移除原多格式 YS 依赖及手工拷贝文件，只保留当前 SDK 和一份 `YSAdvSDK.bundle` |
 | 真机签名失败 | 设置自己的 Team、Bundle Identifier 并确认设备可开发 |
