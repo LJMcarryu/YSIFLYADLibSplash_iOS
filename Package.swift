@@ -1,6 +1,8 @@
 // swift-tools-version:5.9
 
-// 萤石图片/视频仅开屏发行包；同 App 不得与原 YS 包同时链接。
+// YS 图片与视频仅开屏 SDK；同一 App 不得与 YSIFLYADLib 同时链接。
+// 在宿主 App target 的 Other Linker Flags 中添加 -ObjC。
+
 import PackageDescription
 
 let package = Package(

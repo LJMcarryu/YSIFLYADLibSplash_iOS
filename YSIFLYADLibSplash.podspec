@@ -1,3 +1,5 @@
+# YS 图片与视频仅开屏 SDK，不与 YSIFLYADLib 同时链接。
+
 Pod::Spec.new do |s|
   s.name     = 'YSIFLYADLibSplash'
   s.version  = '6.5.0'
@@ -6,8 +8,6 @@ Pod::Spec.new do |s|
   s.author   = { 'LJMcarryu' => 'jmliu6@iflytek.com' }
   s.source   = { :http => 'https://download-adsdk.voiceads.cn/ios_sdk/6.5.0/ys-splash/YSIFLYADLib-SplashOnly-6.5.0.zip' }
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
-
-  # iOS 11 声明只可随重新构建并验证过的新版本二进制发布；不得套用到旧 release 产物。
   s.platform = :ios, '11.0'
   s.static_framework = true
   s.vendored_frameworks = 'YSIFLYADLib.xcframework'
