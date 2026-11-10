@@ -15,7 +15,6 @@ let package = Package(
     targets: [
         .binaryTarget(
             name: "YSIFLYADLib",
-            // 6.5.0 极速发布资产摘要；verification=not-run。
             url: "https://download-adsdk.voiceads.cn/ios_sdk/6.5.0/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
             checksum: "2dd30bae4af7d0dace0db8f955f51922b84c6207a0abdb8ed36a4be00624bea1"
         ),

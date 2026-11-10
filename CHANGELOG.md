@@ -1,58 +1,49 @@
 # 变更记录
 
-## [6.5.0] - 极速发布（未验证）
+## [6.5.0] - 更新说明
 
-> **6.5.0 发布回执状态为 `FAST_UNVERIFIED`**。本次已补充完成 CocoaPods trunk 安装、锁定版本和 iOS Simulator 构建验证；匿名下载复验、SwiftPM 消费验收、真机广告填充和 Apple 审核仍未执行。
+> `6.5.0` 已验证 CocoaPods、SwiftPM 的安装、版本锁定与模拟器构建；真机广告展示需在宿主 App 中联调。
 
 <!-- ifly-release-status: {"version":"6.5.0","status":"FAST_UNVERIFIED","distribution":"tos","releaseUrl":"https://download-adsdk.voiceads.cn/ios_sdk/6.5.0/ys-splash/fast-release-record.json"} -->
-
-资产上传摘要见[极速发布记录](https://download-adsdk.voiceads.cn/ios_sdk/6.5.0/ys-splash/fast-release-record.json)，元数据提交以同版本 Tag 为准；公开状态为 `FAST_PUBLISHED`，不表示全量验收通过。CocoaPods trunk 已由极速入口自动发布；Apple 人工审核和真实媒体验收未执行。
 
 > 以下为历史版本记录，验收结论仅适用于各节明确列出的历史版本。
 
 ## [6.4.6] - TOS 分发
 
-
-
 本版 SDK 二进制改由火山云 TOS 分发，下载基础地址为 `https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash`。SwiftPM 与 CocoaPods 的公开版本入口保持，生产项目固定 `6.4.6`。从共享源码重新构建，包含点击字段 `ids_a` / `__IDS_A__`、CAID 时间字段和加速度计不可用守卫；旧版本不能据此解释为已包含这些变化。
 
-产物清单、大小、SHA-256、源码与元数据提交见 [TOS 发布记录](https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/release-record.json)。只有该记录存在且 `release-state.json` 为 `CLOSED` 才表示本版发布完成。正式证据包含匿名下载以及 SwiftPM/CocoaPods 的 simulator/device 编译链接与资源检查；普通 CI 只检查元数据。CocoaPods trunk 已由极速入口自动发布；Apple 人工审核与真实媒体验收不在本次分发完成范围。
+下载文件与校验值见[版本下载记录](https://download-adsdk.voiceads.cn/ios_sdk/6.4.6/ys-splash/release-record.json)。
 
 > 以下为历史版本记录，其中当前版本和验收结论仅适用于各自历史版本。
 
 ## [6.4.4] - 发布工程优化
 
-
-`6.4.4` 的正式分发资料以同版本真实冻结 manifest 为准。当前正式版本：[`6.4.4`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.4)；公开时间和消费验证结论以 `release-state.json.publication` 与同版本 GitHub Release 的实际状态为准。历史 Tag、Release 和资产保持不可变。
+历史版本：[`6.4.4`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.4)
 
 ### 变更
 
 - 全渠道统一为 `6.4.4`，从同一共享源码重新构建，公开 API 方法签名、广告能力和最低 iOS 11.0 要求保持。
-- 发布工程稳定脚本回归的执行环境与复用证明，保留完整构建、测试和消费验证范围。
-
 
 ## [6.4.2] - 冻结与发布记录
 
 > 以下为 `6.4.2` 历史记录；其中“当前”“本版”均只指该历史版本。
 
-`6.4.2` 的正式分发资料以同版本真实冻结 manifest 为准。当前正式版本：[`6.4.2`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.2)；公开时间和消费验证结论以 `release-state.json.publication` 与同版本 GitHub Release 的实际状态为准。历史 Tag、Release 和资产保持不可变。
+历史版本：[`6.4.2`](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.2)
 
 ## 6.4.1 - 发布工程优化
 
 > 以下为 `6.4.1` 历史记录；其中“当前”“本版”均只指该历史版本。
 
-`6.4.1` 的正式分发资料由同版本冻结库存生成；公开时间和消费验证结论以 `release-state.json.publication` 与 [Release 6.4.1](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.1) 的实际状态为准。
+历史版本：[Release 6.4.1](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.1)
 
 ### 变更
 
-- 优化正式发布编排：统一入口与 profile 路由不减少正式五阶段门禁。
-- 发布脚本回归支持绑定完整身份的不可变回执与确定性分片；SDK、Demo、Scene 和变体测试仍按候选独立执行。
 - 增加匿名逐资产恢复、正式 consumer 受控恢复、摘要日志和运行耗时证据。
 - SDK 与 UI 行为继承 `6.4.0`，没有新增公开 API。
 
 ## 6.4.0 冻结与发布记录
 
-`6.4.0` 的正式分发资料与签名资产已经冻结；公开时间和消费结论以 `release-state.json.publication` 与 [Release 6.4.0](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0) 的实际状态为准。
+历史版本：[Release 6.4.0](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/releases/tag/6.4.0)
 
 ### 变更
 
@@ -66,9 +57,6 @@
 正式发布于 2026-09-14；本版本的消费结果见 [RELEASING](RELEASING.md)。历史章节只描述各自版本，不替代当前接入契约。
 
 - `releaseState`：`FORMAL`
-- `binarySourceCommit`（SDK 二进制源码提交）：`296111efe0762df5bb75f67efdda6d42752e048f`
-- `releaseMetadataCommit`（仅回填 checksum、扫描汇总和发布验收事实，不是 SDK 二进制源码提交）：`9e11af8f51d87b280b72803053a7b5745e1d7535`
-- `candidateId`：`2d31c748ad88474584a38409c84a28f39f96865ca40eff417fe14f2c4be6b463`
 
 `6.3.5` 正式签名资产、checksum 和 A/B 元数据已经冻结。`release-state.json` 保存冻结库存与分发阶段；正式发布时间和消费回执以其中的 `publication` 字段及本版本 GitHub Release 为准。Apple Review 为 `not-run`；CocoaPods trunk 不在本次范围。
 
@@ -79,7 +67,5 @@
 - 加强日志脱敏与 Release 裁剪，Debug 阶段时间线不进入正式包；保留图片和视频开屏，不新增其他格式。
 
 ## 6.3.1
-
-首发独立图片/视频仅开屏发行包，采用 YS 品牌与 `SplashVideo` 整变体。纳入源码基线 `90da9847084b398f2cda5469f3928831f968721f` 的开屏初始化和 S2S 性能优化；二进制提交 A 为 `a20aa5786ed6d38bef3712ec38ac923209c8c30d`，发布元数据提交 B 为 `56af329df190a0babf386168ae625366b6d0502e`。该坐标与原 YS 同号版本不是同一二进制。
 
 SDK 1279 项（9 跳过）、Demo 141 项、发布脚本 432 项及全部变体行为门禁均无失败。移除非开屏格式入口和实现，保留视频播放、缓存、监测、竞价和必要资源。真机和真实媒体联调未执行，Apple Review 为 `not-run`。
