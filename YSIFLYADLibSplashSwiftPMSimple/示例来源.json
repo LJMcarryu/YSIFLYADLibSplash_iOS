@@ -1,0 +1,7 @@
+{
+  "sdkVersion": "6.5.0",
+  "sdkTagCommit": "b0b524eb1c4fda0b9232f581d6eb7a2f52d65d05",
+  "demoSourceCommit": "0a7c7031fa9d9479c19e78c4666e9ac13b703dd1",
+  "demoSourceDirectory": "YSIFLYADLibSimple",
+  "integration": "swiftpm"
+}

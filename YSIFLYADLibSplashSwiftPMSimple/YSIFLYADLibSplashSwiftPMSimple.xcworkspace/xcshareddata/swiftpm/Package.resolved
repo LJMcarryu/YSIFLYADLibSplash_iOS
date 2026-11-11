@@ -1,0 +1,15 @@
+{
+  "originHash" : "05efdfe1596e96469cba4ac1230c4aecb04bf902421e031e8a7f6681b1d2d7ca",
+  "pins" : [
+    {
+      "identity" : "ysiflyadlibsplash_ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS.git",
+      "state" : {
+        "revision" : "b0b524eb1c4fda0b9232f581d6eb7a2f52d65d05",
+        "version" : "6.5.0"
+      }
+    }
+  ],
+  "version" : 3
+}
