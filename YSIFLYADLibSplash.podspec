@@ -2,11 +2,11 @@
 
 Pod::Spec.new do |s|
   s.name     = 'YSIFLYADLibSplash'
-  s.version  = '6.5.0'
+  s.version  = '6.5.1'
   s.summary  = '萤石 YS 图片和视频仅开屏广告 SDK。'
   s.homepage = 'https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS'
   s.author   = { 'LJMcarryu' => 'jmliu6@iflytek.com' }
-  s.source   = { :http => 'https://download-adsdk.voiceads.cn/ios_sdk/6.5.0/ys-splash/YSIFLYADLib-SplashOnly-6.5.0.zip' }
+  s.source   = { :http => 'https://download-adsdk.voiceads.cn/ios_sdk/6.5.1/ys-splash/YSIFLYADLib-SplashOnly-6.5.1.zip' }
   s.license  = { :type => 'MIT', :file => 'LICENSE' }
   s.platform = :ios, '11.0'
   s.static_framework = true
