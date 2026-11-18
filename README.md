@@ -1,11 +1,8 @@
 # 萤石仅开屏 iOS SDK
 
-<!-- ifly-fast-release-notice:start -->
-当前版本：`6.5.2`。本版尚未完成安装、构建与广告展示验证，请先在宿主 App 中联调。
+预发布候选：`6.5.3-beta.1`，仅供接入测试。生产环境默认继续使用 `6.5.2`。安装可用性与验收范围以同版发布记录为准；本说明不代表本版真机广告运行、宿主联调或 Apple 审核已通过。
 
-<!-- ifly-release-status: {"version":"6.5.2","status":"FAST_UNVERIFIED","distribution":"tos","releaseUrl":"https://download-adsdk.voiceads.cn/ios_sdk/6.5.2/ys-splash/fast-release-record.json"} -->
-
-<!-- ifly-fast-release-notice:end -->
+<!-- ifly-release-status: {"version":"6.5.3-beta.1","status":"FORMAL","distribution":"tos","releaseUrl":"https://download-adsdk.voiceads.cn/ios_sdk/6.5.3-beta.1/ys-splash/release-record.json"} -->
 
 `YSIFLYADLibSplash` 为 iOS App 提供图片和视频开屏广告；本仓库包含分发清单、接入指南与示例。
 
@@ -41,6 +38,16 @@ CocoaPods 示例固定 SDK `6.5.2`；独立 SwiftPM 和手动示例仍固定 `6.
 - iOS 11.0+。
 - 静态 XCFramework，包含设备与模拟器切片；App 最终链接需要 `-ObjC`，无需 **Embed & Sign**。
 - [环境与安装说明](docs/接入指南/安装与资源配置.md#环境要求)区分部署目标、清单要求与工具兼容范围。
+
+## 6.5.3-beta.1 预发布测试
+
+仅在测试分支中选用本预发布；常规生产接入继续使用下方 `6.5.2` 安装配置。完成同版发布后，需要测试时将 Podfile 中的对应依赖精确指定为：
+
+```ruby
+pod 'YSIFLYADLibSplash', '6.5.3-beta.1'
+```
+
+保留既有资源与链接配置，重新执行 `pod install` 并检查 `Podfile.lock` 中的版本。SwiftPM 测试接入请选择 Exact Version `6.5.3-beta.1`，不要使用浮动版本范围。
 
 ## 安装
 
