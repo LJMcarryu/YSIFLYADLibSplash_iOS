@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS.git",
       "state" : {
-        "revision" : "90dd25a1f5b5a1a97450780f674f03c32cd8536f",
-        "version" : "6.5.1"
+        "revision" : "811d364ba675a4363033f5c8bb16bed957708c7e",
+        "version" : "6.5.3-beta.1"
       }
     }
   ],
