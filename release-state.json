@@ -4,31 +4,31 @@
   "distributionBackend": "tos",
   "phase": "FAST_PUBLISHED",
   "verification": "not-run",
-  "version": "6.5.3",
+  "version": "6.5.4",
   "channel": "ys-splash",
   "repository": "LJMcarryu/YSIFLYADLibSplash_iOS",
-  "releaseRecordUrl": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.3/ys-splash/fast-release-record.json",
+  "releaseRecordUrl": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.4/ys-splash/fast-release-record.json",
   "assets": [
     {
-      "name": "YSIFLYADLib-SplashOnly-6.5.3.zip",
-      "size": 2581055,
-      "sha256": "9ffde6ce05f77d5e1fa5be0003c690bfeae1dba7e4fcf581cb7d05ff9997e2d6",
-      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.3/ys-splash/YSIFLYADLib-SplashOnly-6.5.3.zip",
-      "key": "ios_sdk/6.5.3/ys-splash/YSIFLYADLib-SplashOnly-6.5.3.zip"
+      "name": "YSIFLYADLib-SplashOnly-6.5.4.zip",
+      "size": 2587754,
+      "sha256": "b6bb3c7b058404dfa89ae8c1e10aaf616c6c38538956863029493260aecc4c85",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.4/ys-splash/YSIFLYADLib-SplashOnly-6.5.4.zip",
+      "key": "ios_sdk/6.5.4/ys-splash/YSIFLYADLib-SplashOnly-6.5.4.zip"
     },
     {
       "name": "YSIFLYADLib-SplashOnly.xcframework.zip",
-      "size": 2504780,
-      "sha256": "a2fbe550ac1de7dd933f7e8c2bbcef350fdaa8a76a3859e3f7d1fdcd418ac6a8",
-      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.3/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
-      "key": "ios_sdk/6.5.3/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip"
+      "size": 2511484,
+      "sha256": "ebc8a6311fa053b5385d68438364b80fe000f014ca7608f66a6c0bd433bf07e3",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.4/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
+      "key": "ios_sdk/6.5.4/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip"
     },
     {
       "name": "checksums.txt",
       "size": 312,
-      "sha256": "856c53c4fa16731064b91f2dc0c419aa911c1c740f4200f7f5295be324fb4e17",
-      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.3/ys-splash/checksums.txt",
-      "key": "ios_sdk/6.5.3/ys-splash/checksums.txt"
+      "sha256": "b3230c12a9882fab0adbe90fd09c5b8e4f2af2df984b1fa3f2350e68b9aa1063",
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.4/ys-splash/checksums.txt",
+      "key": "ios_sdk/6.5.4/ys-splash/checksums.txt"
     }
   ]
 }
