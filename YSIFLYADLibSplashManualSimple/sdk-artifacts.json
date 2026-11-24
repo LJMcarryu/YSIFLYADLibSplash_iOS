@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "version": "6.5.3",
+  "version": "6.5.4",
   "channel": "ys-splash",
   "assets": [
     {
       "name": "YSIFLYADLib.xcframework",
-      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.3/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
-      "sha256": "f082c047a2e4d3ec2ba5c4d621955d7817f261cca72ae97ee8e54aee493916b1"
+      "url": "https://download-adsdk.voiceads.cn/ios_sdk/6.5.4/ys-splash/YSIFLYADLib-SplashOnly.xcframework.zip",
+      "sha256": "ebc8a6311fa053b5385d68438364b80fe000f014ca7608f66a6c0bd433bf07e3"
     }
   ]
 }

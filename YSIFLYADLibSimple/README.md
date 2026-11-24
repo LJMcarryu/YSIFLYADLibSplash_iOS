@@ -1,6 +1,5 @@
 # YS 仅开屏接入示例
 
-> 本示例遵循公开仓 Demo 契约：固定 SDK 版本、独立 Podfile、可复现运行说明和脱敏问题反馈。
 本工程使用 `YSIFLYADLibSplash 6.5.4`，演示图片与视频开屏的加载、展示、跳过、关闭和资源释放。依赖名称为 `YSIFLYADLibSplash`，代码仍导入 `<YSIFLYADLib/YSIFLYADLib.h>`。
 
 仅开屏 SDK 与多格式 `YSIFLYADLib` 使用相同模块和资源，不可同时加入同一 App。完整安装说明见[SDK 接入说明](../README.md)。
@@ -9,13 +8,13 @@
 
 ## 下载入口与版本
 
-无需 Git 时，可下载 [GitHub main 分支源码 ZIP](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/archive/refs/heads/main.zip)，解压后进入 `YSIFLYADLibSplash_iOS-main/YSIFLYADLibSimple/`，再执行下方安装命令。不要只下载 `.xcodeproj`。使用 Git 的命令见下文；已有副本先确认本页与 Podfile 都固定 SDK `6.5.3`。
+无需 Git 时，可下载 [GitHub main 分支源码 ZIP](https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS/archive/refs/heads/main.zip)，解压后进入 `YSIFLYADLibSplash_iOS-main/YSIFLYADLibSimple/`，再执行下方安装命令。不要只下载 `.xcodeproj`。使用 Git 的命令见下文；已有副本先确认本页与 Podfile 都固定 SDK `6.5.4`。
 
-依赖安装后核对 `Podfile.lock` 中 `YSIFLYADLibSplash` 为 `6.5.3`。版本找不到或锁文件冲突的处理见[安装指南](../docs/接入指南/安装与资源配置.md#cocoapods)。
+依赖安装后核对 `Podfile.lock` 中 `YSIFLYADLibSplash` 为 `6.5.4`。版本找不到或锁文件冲突的处理见[安装指南](../docs/接入指南/安装与资源配置.md#cocoapods)。
 
 ## 从下载到运行
 
-准备 macOS、Xcode、CocoaPods 和可访问 CocoaPods trunk 和 TOS 下载地址的网络。最低部署目标为 iOS 11.0。使用模拟器可检查安装、链接和页面；真实广告填充、跳转和 ATT 请用真机联调。
+准备 macOS、Xcode、CocoaPods 和可访问 GitHub、CocoaPods 与 TOS 下载地址的网络。最低部署目标为 iOS 11.0。使用模拟器可检查安装、链接和页面；真实广告填充、跳转和 ATT 请用真机联调。
 
 ```bash
 git clone https://github.com/LJMcarryu/YSIFLYADLibSplash_iOS.git
@@ -83,7 +82,7 @@ SDK 不要求额外 App ID 初始化。广告位须与媒体获授权的 App 和
 
 | 现象 | 检查方法 |
 | --- | --- |
-| 下载依赖失败 | 检查 CocoaPods trunk、TOS 下载地址、代理和证书，按错误信息定位后重试 |
+| 下载依赖失败 | 检查 GitHub 与 TOS 下载地址、代理和证书，按错误信息定位后重试 |
 | 找不到 `YSIFLYADLibSplash` 头 | `YSIFLYADLibSplash` 是依赖/产品名，导入模块为 `YSIFLYADLib`；使用 workspace |
 | 重复符号或资源 | 移除原多格式 YS 依赖及手工拷贝文件，只保留当前 SDK 和一份 `YSAdvSDK.bundle` |
 | 真机签名失败 | 设置自己的 Team、Bundle Identifier 并确认设备可开发 |
@@ -95,6 +94,6 @@ SDK 不要求额外 App ID 初始化。广告位须与媒体获授权的 App 和
 
 先查[错误处理与反馈](../docs/接入指南/错误处理与反馈.md)；仍需帮助时通过双方约定的支持渠道反馈，附 SDK/iOS/Xcode 版本、设备类型、复现步骤、错误码和脱敏日志。版本变化见[更新记录](../CHANGELOG.md)。
 
-## 6.5.3 快速发布说明
+## 已验证范围
 
-本示例已同步至 SDK `6.5.3`；本次快速发布未执行独立安装、构建与广告展示复验，请按发布回执在宿主 App 中联调。
+2026-11-24，固定 SDK `6.5.4`，使用 Xcode 26.2 完成 Debug 的 iOS Simulator arm64 和 iOS 设备 arm64 构建，并核对依赖身份、链接符号、资源及隐私清单。设备架构构建关闭代码签名。未安装或运行 App，未验证广告加载、填充、展示、点击跳转、签名分发、x86_64 或 iOS 11 设备运行。

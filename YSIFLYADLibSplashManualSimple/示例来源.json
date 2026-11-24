@@ -1,6 +1,6 @@
 {
-  "sdkVersion": "6.5.3",
-  "sdkTagCommit": "58a8f3cd047df3b91a331ba8dbf2089de5e74db2",
+  "sdkVersion": "6.5.4",
+  "sdkTagCommit": "45f4b5db3582a5e5804f34fa1a60fc52beb1e32a",
   "demoSourceCommit": "0a7c7031fa9d9479c19e78c4666e9ac13b703dd1",
   "demoSourceDirectory": "YSIFLYADLibSimple",
   "integration": "manual",
